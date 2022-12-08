@@ -1,6 +1,18 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Hotel_Management.Models;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
+//builder.Services.AddDbContext<>();
+builder.Services.AddScoped<IBookingRepo, BookingRepo>();
+builder.Services.AddScoped<IGuestRepo, GuestRepo>();
+builder.Services.AddScoped<IRoomRepo, RoomRepo>();
+
+
+var app = builder.Build();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 
 app.Run();
+
