@@ -15,8 +15,8 @@ namespace Hotel_Management.Models
 
         public virtual DbSet<Booking> Bookings { get; set; }
 
-        public virtual DbSet<Guest>
+        public virtual DbSet<Guest> Guests { get; set; }
 
-
+        public virtual DbSet<Room> Rooms { get; set; }
     }
 }

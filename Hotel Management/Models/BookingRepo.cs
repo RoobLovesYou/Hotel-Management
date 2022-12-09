@@ -1,25 +1,37 @@
-﻿namespace Hotel_Management.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Hotel_Management.Models
 {
     public class BookingRepo : IBookingRepo
     {
 
-        public Booking this[int id] => new Booking { };
+        private HMContext _context;
+
+        public BookingRepo(HMContext context)
+        {
+            _context = context;
+        }   
+
+
+        public Booking this[int id] => _context.Bookings.Where(b => b.bookingId == id).Single();
 
         public Booking AddBooking(Booking booking)
         {
-            return null;
+            _context.Bookings.Add(booking);
+            return booking;
 
         }
         public Booking UpdateBooking(Booking booking)
         {
-            return null;
+            _context.Bookings.Update(booking);
+            return booking;
         }
         public void DeleteBooking(Booking booking)
         {
-
+            _context.Bookings.Remove(booking);
         }
 
-       // public IQueryable<Booking> GetBookings => TODO
+        public IQueryable<Booking> GetBookings => _context.Bookings;
 
     }
 }
