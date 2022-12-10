@@ -6,6 +6,10 @@
         public decimal Price { get; set; }
         public enum RoomType
         {
+            Single,
+            Double,
+            Deluxe,
+            Suite
             //add room types here
         }
         public RoomType roomType { get; set; }
