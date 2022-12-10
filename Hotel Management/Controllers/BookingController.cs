@@ -1,13 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hotel_Management.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel_Management.Controllers
 {
     public class BookingController : Controller
     {
-        //temp
-        public IActionResult BookingHome()
+        private IBookingRepo _bookingRepo;
+
+        public BookingController(IBookingRepo bookingRepo)
         {
-            return View();
+            _bookingRepo = bookingRepo;
         }
+
+
+        //temp
+        [HttpGet]
+        public IEnumerable<Booking> BookingHome() => _bookingRepo.GetBookings;
+
+
+
+
     }
 }

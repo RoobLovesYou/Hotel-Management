@@ -2,7 +2,7 @@
 {
     public interface IBookingRepo
     {
-        //IQueryable<Booking> GetBookings { get; }
+        IQueryable<Booking> GetBookings { get; }
         Booking this[int id] { get; }
 
         Booking AddBooking(Booking booking);
