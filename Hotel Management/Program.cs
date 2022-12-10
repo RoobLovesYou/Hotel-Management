@@ -18,7 +18,7 @@ app.UseRouting();
 
 app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 
-SampleData.LoadData(app);
+//SampleData.LoadData(app);
 
 app.Run();
 

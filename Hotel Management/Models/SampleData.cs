@@ -38,7 +38,7 @@ namespace Hotel_Management.Models
                         BookingDateFrom = new DateTime(2023, 01, 8),
                         BookingDateTo = new DateTime(2023, 01, 14),
                         Deposit = 200,
-                        Status = true
+                        Status = false
                     }
                 );
                 context.Rooms.AddRange(
@@ -74,7 +74,7 @@ namespace Hotel_Management.Models
                       //  RoomId = 4,
                         Price = 181,
                         roomType = Room.RoomType.Suite,
-                        isOccupied = false,
+                        isOccupied = true,
                         RoomCapacity = 4,
                         RoomDescription = "Upscale hotel offering Suite room with Separate Kitchen, Dining, Living Areas"
                     }

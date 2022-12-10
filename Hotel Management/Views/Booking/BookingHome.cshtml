@@ -1,4 +1,37 @@
-﻿@{
+﻿@model IEnumerable<Booking>
+@{
     ViewData["Title"] = "Bookings";
 }
-<h1>@ViewData["Title"]</h1>
+<h1 class="m-2">@ViewData["Title"]</h1>
+
+<a asp-action="AddBooking" class="btn btn-primary m-2" style="color:white;font-weight:bold"><i class="fa fa-plus"></i> ADD BOOKING</a>
+<table class="table table-sm table-striped table-bordered m-2">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Booking Date</th>
+            <th>Deposit</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.bookingId</td>
+                <td>@book.BookingDateFrom To @book.BookingDateTo</td>
+                <td>@book.Deposit</td>
+                    @if (book.Status == true){
+                        <td style="padding:10px"><span class="text-bg-success text-center text-white rounded" style="padding:5px;font-size:16px">Confirmed</span></td>
+                    }else{
+                        <td style="padding:10px"><span class="text-bg-danger text-center text-white rounded" style="padding:5px;font-size:16px">Cancelled</span></td>
+                    }
+                <td><a asp-action="UpdateBooking" asp-route-id="@book.bookingId" class="btn btn-info" style="color:white"><i class="fa fa-pencil" title="Edit"></i> Edit</a></td>
+       
+                <td><form asp-action="DeleteBooking" method="post" class="btn btn-warning" style="color:white"><input type="hidden" value="@book.bookingId" name="BookingId"/><i class="fa fa-trash" title="Delete"></i> Delete</form></td>
+            </tr>
+        }
+    </tbody>
+</table>
