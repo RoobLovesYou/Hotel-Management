@@ -4,7 +4,8 @@ namespace Hotel_Management.Controllers
 {
     public class GuestController : Controller
     {
-        public IActionResult Index()
+        //temp
+        public IActionResult GuestHome()
         {
             return View();
         }
