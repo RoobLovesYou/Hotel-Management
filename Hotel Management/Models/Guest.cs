@@ -6,5 +6,7 @@
         public string guestName { get; set; }
         public string guestPhoneNo { get; set; }
         public string guestEmail { get; set; }
+
+        //could add checkedIn bool? 
     }
 }
