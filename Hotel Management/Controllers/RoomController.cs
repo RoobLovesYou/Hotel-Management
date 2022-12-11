@@ -18,5 +18,12 @@ namespace Hotel_Management.Controllers
             return View(_roomRepo.GetRooms);
         }
 
+
+        [HttpPost]
+        public IActionResult RoomHome(string roomNo)
+        {
+            int result = Int32.Parse(roomNo);
+            return View(_roomRepo.GetRooms.Where(r => r.RoomId == result));
+        }
     }
 }
