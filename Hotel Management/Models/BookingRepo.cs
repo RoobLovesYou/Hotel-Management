@@ -18,17 +18,20 @@ namespace Hotel_Management.Models
         public Booking AddBooking(Booking booking)
         {
             _context.Bookings.Add(booking);
+            _context.SaveChanges();
             return booking;
 
         }
         public Booking UpdateBooking(Booking booking)
         {
             _context.Bookings.Update(booking);
+            _context.SaveChanges();
             return booking;
         }
         public void DeleteBooking(Booking booking)
         {
             _context.Bookings.Remove(booking);
+            _context.SaveChanges();
         }
 
         public IQueryable<Booking> GetBookings => _context.Bookings;
