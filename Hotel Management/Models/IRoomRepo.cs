@@ -2,7 +2,7 @@
 {
     public interface IRoomRepo
     {
-        //IQueryable<Room> GetRooms { get; }
+        IQueryable<Room> GetRooms { get; }
         Room this[int id] { get; }
     }
 }

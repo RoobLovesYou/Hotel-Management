@@ -15,18 +15,21 @@
         public Room AddRoom(Room room)
         {
             _context.Rooms.Add(room);
+            _context.SaveChanges();
             return room;
         }
 
         public Room UpdateRoom(Room room)
         {
             _context.Rooms.Update(room);
+            _context.SaveChanges();
             return room;
         }
 
         public void DeleteRoom(Room room)
         {
             _context.Rooms.Remove(room);
+            _context.SaveChanges();
         }
     }
 }

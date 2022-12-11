@@ -1,4 +1,38 @@
-﻿@{
+﻿@model IEnumerable<Room>
+@{
     ViewData["Title"] = "Rooms";
 }
-<h1>@ViewData["Title"]</h1>
+<h1 class="m-2">@ViewData["Title"]</h1>
+
+<table class="table table-sm table-striped table-bordered m-2">
+    <thead>
+        <tr>
+            <th>Room No.</th>
+            <th>Price</th>
+            <th>Room Type</th>
+            <th>Capacity</th>
+            <th>Description</th>
+            <th>Booking Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomId</td>
+                <td>@room.Price</td>
+                <td>@room.roomType</td>
+                <td>@room.RoomCapacity</td>
+                <td>@room.RoomDescription</td>
+                @if (room.isOccupied == true)
+                {
+                    <td style="padding:10px"><span class="text-bg-success text-center text-white rounded" style="padding:5px;font-size:16px">Occupied</span></td>
+                }
+                else
+                {
+                    <td style="padding:10px"><span class="text-bg-warning text-center text-white rounded" style="padding:5px;font-size:16px">Vacant</span></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
