@@ -4,24 +4,24 @@
 }
 <h1 class="m-2">@ViewData["Title"]</h1>
 
-<a asp-action="BookingHome" class="btn btn-outline-secondary m-2">Return to Bookings</a>
+<a asp-action="BookingHome" class="btn btn-danger m-2">Return to Bookings</a>
 
 <form asp-action="AddBooking" method="post">
 
     <div class="form-group m-2">
         <label asp-for="BookingDateFrom" class="form-label">Booking Date From:</label>
-        <input asp-for="BookingDateFrom" type="datetime" class="form-control" />
+        <input asp-for="BookingDateFrom" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS"/>
         
     </div>
 
     <div class="form-group m-2">
         <label asp-for="BookingDateTo" class="form-label">Booking Date To:</label>
-        <input asp-for="BookingDateTo" type="datetime" class="form-control" />
+        <input asp-for="BookingDateTo" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" />
     </div>
 
     <div class="form-group m-2">
         <label asp-for="Deposit" class="form-label">Deposit:</label>
-        <input asp-for="Deposit" class="form-control" />
+        <input asp-for="Deposit" class="form-control" placeholder="000.00"/>
     </div>
 
     <div class="form-group m-2">

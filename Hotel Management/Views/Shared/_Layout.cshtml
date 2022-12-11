@@ -7,8 +7,9 @@
     <link href="~/bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="~/twitter-boostrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/font-awesome/css/all.css" rel="stylesheet" />
+   
 </head>
-<body>
+<body style="background-image:url('/Images/imageBG.jpg');background-size:cover;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -36,14 +37,16 @@
             </div>
         </nav>
     </header>
-
-    <div class="container">
+    
+    <div class="container text-light">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-mute" style="margin-top:890px">
+    
+
+    <footer class="border-top footer text-mute text-light" style="margin-top:890px">
         <div class="container" style="margin-top:10px; margin-bottom:10px;">
             &copy; 2022 - Hotel Management Application
         </div>
