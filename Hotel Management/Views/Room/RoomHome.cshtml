@@ -1,4 +1,46 @@
-﻿@{
+﻿@model IEnumerable<Room>
+@{
     ViewData["Title"] = "Rooms";
 }
-<h1>@ViewData["Title"]</h1>
+<h1 class="m-2">@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="m-2">
+        <input class="rounded" type="text" name="roomNo" placeholder="Search Room No.">
+        <button class="btn btn-primary" style="margin-bottom:4px;margin-left:5px" type="submit"><i class="fa fa-search fa-lg"></i> Search</button>
+    </div>
+</form>
+
+
+<table class="table table-sm table-bordered m-2 text-light">
+    <thead>
+        <tr>
+            <th>Room No.</th>
+            <th>Price</th>
+            <th>Room Type</th>
+            <th>Capacity</th>
+            <th>Description</th>
+            <th>Booking Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomId</td>
+                <td>@room.Price</td>
+                <td>@room.roomType</td>
+                <td>@room.RoomCapacity</td>
+                <td>@room.RoomDescription</td>
+                @if (room.isOccupied == true)
+                {
+                    <td style="padding:10px"><span class="text-center text-white rounded" style="padding:5px;font-size:16px;background-color:lightseagreen">Occupied</span></td>
+                }
+                else
+                {
+                    <td style="padding:10px"><span class="text-bg-warning text-center text-white rounded" style="padding:5px;font-size:16px">Vacant</span></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

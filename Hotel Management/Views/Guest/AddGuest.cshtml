@@ -1,0 +1,30 @@
+﻿@model Guest
+@{
+    ViewData["Title"] = "Add a Guest";
+}
+<h1 class="m-2">@ViewData["Title"]</h1>
+
+<a asp-action="GuestHome" class="btn btn-danger m-2">Return to Guests</a>
+
+<form asp-action="AddGuest" method="post">
+
+    <div class="form-group m-2">
+        <label asp-for="guestName" class="form-label">Full Name:</label>
+        <input asp-for="guestName" type="text" class="form-control"  placeholder="John Smith"/>
+
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="guestPhoneNo" class="form-label">Phone Number:</label>
+        <input asp-for="guestPhoneNo" type="tel" class="form-control" placeholder="415-555-2671"/>
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="guestEmail" class="form-label">Email:</label>
+        <input asp-for="guestEmail" type="email" class="form-control" placeholder="John@outlook.com" />
+    </div>
+
+   
+
+    <button type="submit" class="btn btn-primary m-2" style="color:white;font-weight:bold"><i class="fa fa-plus"></i> ADD GUEST</button>
+</form>

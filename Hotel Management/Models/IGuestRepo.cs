@@ -2,7 +2,7 @@
 {
     public interface IGuestRepo
     {
-        //IQueryable<Guest> GetGuests { get; }
+        IQueryable<Guest> GetGuests { get; }
         Guest this[int id] { get; }
 
         Guest AddGuest(Guest guest);

@@ -12,16 +12,11 @@ namespace Hotel_Management.Controllers
             _bookingRepo = bookingRepo;
         }
 
-
-
         [HttpGet]
-       // public IEnumerable<Booking> BookingHome() => _bookingRepo.GetBookings;
         public IActionResult BookingHome()
         {
             return View(_bookingRepo.GetBookings);
         }
-
-        
 
 
 
@@ -57,14 +52,21 @@ namespace Hotel_Management.Controllers
         [HttpPost]
         public IActionResult UpdateBooking(Booking booking)
         {
-            // _bookingRepo.UpdateBooking(booking);
             if (ModelState.IsValid)
             {
-             //   _bookingRepo.UpdateBooking(booking);
-                return RedirectToAction("UpdateBooking");
+                _bookingRepo.UpdateBooking(booking);
+                return RedirectToAction("BookingHome");
             }
-            return View("BookingHome");
-        }*/
+            return View("UpdateBooking");
+        }
+
+        [HttpPost, ActionName("DeleteBooking")]
+        public IActionResult DeleteConfirm(int id)
+        {
+            var booking = _bookingRepo[id];
+            _bookingRepo.DeleteBooking(booking);
+            return RedirectToAction("BookingHome");
+        }
 
     }
 }
