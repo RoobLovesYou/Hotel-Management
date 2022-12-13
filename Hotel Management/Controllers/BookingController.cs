@@ -21,10 +21,39 @@ namespace Hotel_Management.Controllers
             return View(_bookingRepo.GetBookings);
         }
 
-        //     [HttpDelete]
-        //     public void Delete(int id) => _bookingRepo.DeleteBooking(id);
-       
-        /*
+        
+
+
+
+        [HttpGet]
+        public IActionResult AddBooking()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBooking(Booking booking)
+        {
+            if (ModelState.IsValid)
+            {
+                _bookingRepo.AddBooking(booking);
+                return RedirectToAction("BookingHome");
+            }
+            return View("AddBooking");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateBooking(int id)
+        {
+            
+            if ( id == 0)
+            {
+                return View(new Booking());
+            }
+            
+            return View(_bookingRepo[id]);
+        }
+
         [HttpPost]
         public IActionResult UpdateBooking(Booking booking)
         {
