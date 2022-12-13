@@ -18,6 +18,7 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult BookingHome()
         {
+           
             return View(_bookingRepo.GetBookings);
         }
 
