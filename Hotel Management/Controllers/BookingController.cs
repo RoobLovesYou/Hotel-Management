@@ -19,6 +19,7 @@ namespace Hotel_Management.Controllers
         }
 
 
+
         [HttpGet]
         public IActionResult AddBooking()
         {
