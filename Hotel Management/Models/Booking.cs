@@ -7,8 +7,8 @@
         public DateTime BookingDateTo { get; set; }
         public decimal Deposit { get; set; }
         public bool Status { get; set; }
-        public int guestId { get; set; }
-        public int roomId { get; set; }
+        public Guest guest { get; set; }
+        public Room room { get; set; }
 
     }
 }

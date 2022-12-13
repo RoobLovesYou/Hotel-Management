@@ -45,7 +45,7 @@ namespace Hotel_Management.Models
                         BookingDateFrom = new DateTime(2022, 12, 1),
                         BookingDateTo = new DateTime(2022, 12, 6),
                         Deposit = 150,
-                        guestId = 1,
+                        //guestId = 1,
                         Status = true,
                     },
                     new Booking
@@ -54,7 +54,7 @@ namespace Hotel_Management.Models
                         BookingDateFrom = new DateTime(2022, 11, 15),
                         BookingDateTo = new DateTime(2022, 11, 20),
                         Deposit = 100,
-                        guestId = 2,
+                      //  guestId = 2,
                         Status = true
                     },
                     new Booking
@@ -63,7 +63,7 @@ namespace Hotel_Management.Models
                         BookingDateFrom = new DateTime(2023, 01, 8),
                         BookingDateTo = new DateTime(2023, 01, 14),
                         Deposit = 200,
-                        guestId = 2,
+                      //  guestId = 2,
                         Status = false
                     }
                 );

@@ -10,7 +10,7 @@
     <a asp-controller="Booking" asp-action="AddBooking" class="btn btn-primary m-2" style="color:white;font-weight:bold"><i class="fa fa-plus"></i> ADD BOOKING</a>
 </div>
 
-@if(Model.bookings != null){
+@if(Model.bookings.Any()){
 <table class="table table-sm table-bordered m-2 text-light">
 <thead>
     <tr>
