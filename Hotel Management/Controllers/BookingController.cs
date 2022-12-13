@@ -8,18 +8,23 @@ namespace Hotel_Management.Controllers
     {
         private IBookingRepo _bookingRepo;
         private IGuestRepo _guestRepo;
+        private IRoomRepo _roomRepo;
 
-        public BookingController(IBookingRepo bookingRepo, IGuestRepo guestRep)
+        public BookingController(IBookingRepo bookingRepo, IGuestRepo guestRep, IRoomRepo roomRepo)
         {
             _bookingRepo = bookingRepo;
             _guestRepo = guestRep;
+            _roomRepo = roomRepo;
         }
 
         [HttpGet]
         public IActionResult BookingHome()
         {
-           BookingListView blv = new BookingListView();
-            
+           GuestBookingView blv = new GuestBookingView();
+            blv.bookings = _bookingRepo.GetBookings;
+
+           
+
             return View(_bookingRepo.GetBookings);
         }
 
@@ -28,9 +33,9 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult AddBooking()
         {
-            GuestBookingView gb = new GuestBookingView();
-            gb.guests = _guestRepo.GetGuests;
-            return View(gb);
+            AddBookingView abv = new AddBookingView();
+            abv.guests = _guestRepo.GetGuests;
+            return View(abv);
         }
 
         [HttpPost]

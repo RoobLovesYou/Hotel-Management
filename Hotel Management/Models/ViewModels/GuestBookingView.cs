@@ -2,9 +2,10 @@
 {
     public class GuestBookingView
     {
-        public Booking Booking { get; set; }
-        public IEnumerable<Guest> guests { get; set; }
+        public Guest guest { get; set; }
+        public IEnumerable<Booking> bookings { get; set; }
 
+        
 
     }
 }

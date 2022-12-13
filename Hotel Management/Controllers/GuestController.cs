@@ -74,7 +74,7 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult GuestBookings(int id)
         {
-            BookingListView bookingListView = new BookingListView();
+            GuestBookingView bookingListView = new GuestBookingView();
             bookingListView.guest = _guestRepo[id];
             bookingListView.bookings = _bookingRepo.GetBookings.Where(b => b.guestId == bookingListView.guest.guestId);
 

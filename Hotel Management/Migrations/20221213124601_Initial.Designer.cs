@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Migrations
 {
     [DbContext(typeof(HMContext))]
-    [Migration("20221213111351_Initial")]
+    [Migration("20221213124601_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -48,9 +48,10 @@ namespace HotelManagement.Migrations
                     b.Property<int>("guestId")
                         .HasColumnType("int");
 
-                    b.HasKey("bookingId");
+                    b.Property<int>("roomId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("guestId");
+                    b.HasKey("bookingId");
 
                     b.ToTable("Bookings");
                 });
@@ -107,22 +108,6 @@ namespace HotelManagement.Migrations
                     b.HasKey("RoomId");
 
                     b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("Hotel_Management.Models.Booking", b =>
-                {
-                    b.HasOne("Hotel_Management.Models.Guest", "guest")
-                        .WithMany("bookings")
-                        .HasForeignKey("guestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("guest");
-                });
-
-            modelBuilder.Entity("Hotel_Management.Models.Guest", b =>
-                {
-                    b.Navigation("bookings");
                 });
 #pragma warning restore 612, 618
         }

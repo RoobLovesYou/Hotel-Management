@@ -12,6 +12,24 @@ namespace HotelManagement.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    bookingId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingDateFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BookingDateTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deposit = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    guestId = table.Column<int>(type: "int", nullable: false),
+                    roomId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.bookingId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Guests",
                 columns: table => new
                 {
@@ -42,34 +60,6 @@ namespace HotelManagement.Migrations
                 {
                     table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    bookingId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BookingDateFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BookingDateTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Deposit = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    guestId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.bookingId);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Guests_guestId",
-                        column: x => x.guestId,
-                        principalTable: "Guests",
-                        principalColumn: "guestId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_guestId",
-                table: "Bookings",
-                column: "guestId");
         }
 
         /// <inheritdoc />
@@ -79,10 +69,10 @@ namespace HotelManagement.Migrations
                 name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "Guests");
 
             migrationBuilder.DropTable(
-                name: "Guests");
+                name: "Rooms");
         }
     }
 }
