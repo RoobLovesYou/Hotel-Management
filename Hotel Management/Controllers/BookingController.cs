@@ -18,7 +18,8 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult BookingHome()
         {
-           
+           BookingListView blv = new BookingListView();
+            
             return View(_bookingRepo.GetBookings);
         }
 
@@ -27,12 +28,8 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult AddBooking()
         {
-            GuestBooking gb = new GuestBooking();
-
-            gb.Booking = new Booking();
+            GuestBookingView gb = new GuestBookingView();
             gb.guests = _guestRepo.GetGuests;
-            
-
             return View(gb);
         }
 

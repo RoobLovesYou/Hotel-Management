@@ -1,4 +1,5 @@
 ﻿using Hotel_Management.Models;
+using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel_Management.Controllers
@@ -7,10 +8,12 @@ namespace Hotel_Management.Controllers
     {
 
         private IGuestRepo _guestRepo;
+        private IBookingRepo _bookingRepo;
 
-        public GuestController(IGuestRepo guestRepo)
+        public GuestController(IGuestRepo guestRepo, IBookingRepo bookingRepo)
         {
             _guestRepo = guestRepo;
+            _bookingRepo = bookingRepo;
         }
 
         [HttpGet]
@@ -71,7 +74,12 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult GuestBookings(int id)
         {
-            return View(_guestRepo[id]);
+            BookingListView bookingListView = new BookingListView();
+            bookingListView.guest = _guestRepo[id];
+            bookingListView.bookings = _bookingRepo.GetBookings.Where(b => b.guestId == bookingListView.guest.guestId);
+
+
+            return View(bookingListView);
         }
 
         
