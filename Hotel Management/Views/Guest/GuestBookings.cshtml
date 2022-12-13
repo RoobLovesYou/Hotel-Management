@@ -38,10 +38,10 @@
                 {
                     <td style="padding:10px"><span class="text-bg-warning text-center text-white rounded" style="padding:5px;font-size:16px">Cancelled</span></td>
                 }
-                <td><a asp-action="UpdateBooking" asp-route-id="@book.bookingId" class="btn btn-info" style="color:white"><i class="fa fa-pencil" title="Edit"></i> Edit</a></td>
+                <td><a asp-controller="Booking" asp-action="UpdateBooking" asp-route-id="@book.bookingId" class="btn btn-info" style="color:white"><i class="fa fa-pencil" title="Edit"></i> Edit</a></td>
 
                 <td>
-                    <form asp-action="DeleteBooking" asp-route-id="@book.bookingId">
+                        <form asp-controller="Booking" asp-action="DeleteBooking" asp-route-id="@book.bookingId">
                         <button type="submit" class="btn btn-danger" style="color:white">
                             <i class="fa fa-trash" title="Delete"></i> Delete
                         </button>

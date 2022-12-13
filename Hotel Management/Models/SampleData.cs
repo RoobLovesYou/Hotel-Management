@@ -41,7 +41,7 @@ namespace Hotel_Management.Models
                 context.Bookings.AddRange(
                     new Booking
                     {
-                      //  bookingId = 1,
+                        //  bookingId = 1,
                         BookingDateFrom = new DateTime(2022, 12, 1),
                         BookingDateTo = new DateTime(2022, 12, 6),
                         Deposit = 150,
@@ -50,7 +50,7 @@ namespace Hotel_Management.Models
                     },
                     new Booking
                     {
-                      //  bookingId = 2,
+                        //  bookingId = 2,
                         BookingDateFrom = new DateTime(2022, 11, 15),
                         BookingDateTo = new DateTime(2022, 11, 20),
                         Deposit = 100,
@@ -59,7 +59,7 @@ namespace Hotel_Management.Models
                     },
                     new Booking
                     {
-                       // bookingId = 3,
+                        // bookingId = 3,
                         BookingDateFrom = new DateTime(2023, 01, 8),
                         BookingDateTo = new DateTime(2023, 01, 14),
                         Deposit = 200,
