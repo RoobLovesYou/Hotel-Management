@@ -1,6 +1,7 @@
 ﻿using Hotel_Management.Models;
 using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Hotel_Management.Controllers
 {
@@ -35,6 +36,7 @@ namespace Hotel_Management.Controllers
         {
             AddBookingView abv = new AddBookingView();
             abv.guests = _guestRepo.GetGuests;
+            abv.rooms = _roomRepo.GetRooms;
             return View(abv);
         }
 
@@ -43,6 +45,7 @@ namespace Hotel_Management.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 _bookingRepo.AddBooking(booking);
                 return RedirectToAction("BookingHome");
             }
@@ -83,6 +86,22 @@ namespace Hotel_Management.Controllers
             _bookingRepo.DeleteBooking(booking);
             return RedirectToAction("BookingHome");
         }
+
+        [HttpGet]
+        public IActionResult BookingDetails(int id)
+        {
+            BookingDetailsView bookingDetailsView = new BookingDetailsView();
+            bookingDetailsView.booking = _bookingRepo[id];
+        
+
+
+
+            bookingDetailsView.guest = _guestRepo[bookingDetailsView.booking.guestId];
+            bookingDetailsView.room = _roomRepo[bookingDetailsView.booking.roomId];
+
+            return View(bookingDetailsView);
+        }
+
 
     }
 }

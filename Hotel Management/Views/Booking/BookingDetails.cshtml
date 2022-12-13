@@ -1,0 +1,21 @@
+﻿@model BookingDetailsView
+@{
+
+}
+
+<h1>Booking No.@Model.booking.guestId Details</h1>
+
+<a asp-action="BookingHome" class="btn btn-danger m-2">Return to Bookings</a>
+
+<li class="li list-group">
+    <ul>@Model.booking.BookingDateTo</ul>
+    <ul>@Model.booking.BookingDateFrom</ul>
+</li>
+<li class="li list-group">
+    <ul>@Model.guest.guestName</ul>
+    <ul>@Model.guest.guestEmail</ul>
+</li>
+<li class="li list-group">
+    <ul>@Model.room.RoomId</ul>
+    <ul>@Model.room.roomType</ul>
+</li>

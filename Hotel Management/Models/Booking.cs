@@ -1,4 +1,6 @@
-﻿namespace Hotel_Management.Models
+﻿using Google.Apis.Calendar.v3.Data;
+
+namespace Hotel_Management.Models
 {
     public class Booking
     {
@@ -7,8 +9,8 @@
         public DateTime BookingDateTo { get; set; }
         public decimal Deposit { get; set; }
         public bool Status { get; set; }
-        public Guest guest { get; set; }
-        public Room room { get; set; }
+        public int guestId { get; set; }
+        public int roomId { get; set; }
 
     }
 }
