@@ -1,4 +1,5 @@
 ﻿using Hotel_Management.Models;
+using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel_Management.Controllers
@@ -6,10 +7,12 @@ namespace Hotel_Management.Controllers
     public class BookingController : Controller
     {
         private IBookingRepo _bookingRepo;
+        private IGuestRepo _guestRepo;
 
-        public BookingController(IBookingRepo bookingRepo)
+        public BookingController(IBookingRepo bookingRepo, IGuestRepo guestRep)
         {
             _bookingRepo = bookingRepo;
+            _guestRepo = guestRep;
         }
 
         [HttpGet]
@@ -19,11 +22,17 @@ namespace Hotel_Management.Controllers
         }
 
 
-
+        
         [HttpGet]
         public IActionResult AddBooking()
         {
-            return View();
+            GuestBooking gb = new GuestBooking();
+
+            gb.Booking = new Booking();
+            gb.guests = _guestRepo.GetGuests;
+            
+
+            return View(gb);
         }
 
         [HttpPost]
@@ -36,6 +45,10 @@ namespace Hotel_Management.Controllers
             }
             return View("AddBooking");
         }
+        
+
+
+        
 
         [HttpGet]
         public IActionResult UpdateBooking(int id)

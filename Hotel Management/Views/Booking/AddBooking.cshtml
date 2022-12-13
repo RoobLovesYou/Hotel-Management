@@ -1,6 +1,14 @@
-﻿@model Booking
+﻿@model GuestBooking
 @{
     ViewData["Title"] = "Add a Booking";
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach(Guest g in Model.guests){
+        listItems.Add(new SelectListItem
+                {
+                    Text = g.guestName,
+                    Value = g.guestName
+                });
+    }
 }
 <h1 class="m-2">@ViewData["Title"]</h1>
 
@@ -9,29 +17,39 @@
 <form asp-action="AddBooking" method="post">
 
     <div class="form-group m-2">
-        <label asp-for="BookingDateFrom" class="form-label">Booking Date From:</label>
-        <input asp-for="BookingDateFrom" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS"/>
+        <label asp-for="@Model.Booking.BookingDateFrom" class="form-label">Booking Date From:</label>
+        <input asp-for="@Model.Booking.BookingDateFrom" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" />
         
     </div>
 
     <div class="form-group m-2">
-        <label asp-for="BookingDateTo" class="form-label">Booking Date To:</label>
-        <input asp-for="BookingDateTo" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" />
+        <label asp-for="@Model.Booking.BookingDateTo" class="form-label">Booking Date To:</label>
+        <input asp-for="@Model.Booking.BookingDateTo" type="datetime" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" />
     </div>
 
     <div class="form-group m-2">
-        <label asp-for="Deposit" class="form-label">Deposit:</label>
-        <input asp-for="Deposit" class="form-control" placeholder="000.00"/>
+        <label asp-for="@Model.Booking.Deposit" class="form-label">Deposit:</label>
+        <input asp-for="@Model.Booking.Deposit" class="form-control" placeholder="000.00" />
     </div>
 
     <div class="form-group m-2">
-        <label asp-for="Status" class="form-label">Status:</label>
-        <select asp-for="Status" class="m-2">
+        <label asp-for="@Model.Booking.Status" class="form-label">Status:</label>
+        <select asp-for="@Model.Booking.Status" class="m-2">
             <option value="">Choose an Option</option>
             <option value="true">Confirmed</option>
             <option value="false">Cancelled</option>
         </select>
     </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Booking.guestId" class="form-label">Guest:</label>
+        <select asp-for="@Model.Booking.guestId" >
+            @foreach(Guest g in Model.guests){
+                <option value=@g.guestId>@g.guestName</option>
+            }
+        </select>
+    </div>
+    
 
     <button type="submit" class="btn btn-primary m-2" style="color:white;font-weight:bold"><i class="fa fa-plus"></i> ADD BOOKING</button>
 </form>

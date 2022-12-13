@@ -67,5 +67,13 @@ namespace Hotel_Management.Controllers
             _guestRepo.DeleteGuest(guest);
             return RedirectToAction("GuestHome");
         }
+
+        [HttpGet]
+        public IActionResult GuestBookings(int id)
+        {
+            return View(_guestRepo[id]);
+        }
+
+        
     }
 }
