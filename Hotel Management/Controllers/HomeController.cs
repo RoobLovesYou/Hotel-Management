@@ -7,15 +7,13 @@ namespace Hotel_Management.Controllers
 {
     public class HomeController : Controller
     {
-        //temp
+        /// <summary>
+        /// Directs to index
+        /// </summary>
+        /// <returns>Index view</returns>
         public IActionResult Index()
         {
             return View();
-        }
-
-        public void CalendarEvents()
-        {
-
         }
     }
 }

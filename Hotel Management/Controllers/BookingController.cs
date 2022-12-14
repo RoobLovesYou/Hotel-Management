@@ -9,10 +9,27 @@ namespace Hotel_Management.Controllers
 {
     public class BookingController : Controller
     {
+        /// <summary>
+        /// Instance of Booking Repository
+        /// </summary>
         private IBookingRepo _bookingRepo;
+
+        /// <summary>
+        /// instance of Guest Repository
+        /// </summary>
         private IGuestRepo _guestRepo;
+
+        /// <summary>
+        /// instance of Room Repository
+        /// </summary>
         private IRoomRepo _roomRepo;
 
+        /// <summary>
+        /// Constructor that takes each of the repositories passed from controllers as arguments. Populates fields with data
+        /// </summary>
+        /// <param name="bookingRepo"></param>
+        /// <param name="guestRep"></param>
+        /// <param name="roomRepo"></param>
         public BookingController(IBookingRepo bookingRepo, IGuestRepo guestRep, IRoomRepo roomRepo)
         {
             _bookingRepo = bookingRepo;
@@ -20,7 +37,10 @@ namespace Hotel_Management.Controllers
             _roomRepo = roomRepo;
         }
 
-        
+        /// <summary>
+        /// Asynchronously calls the BookingAPIs Get() function. Returns all Bookings in DB.
+        /// </summary>
+        /// <returns>All Bookings as List</returns>
         public async Task<IActionResult> BookingHome()
         {
             List<Booking> bookings = new List<Booking>();
@@ -36,7 +56,10 @@ namespace Hotel_Management.Controllers
         }
 
 
-
+        /// <summary>
+        /// Instantiates AddBookingView ViewModel. This allows for all Guests and Rooms to be accessed in AddBooking
+        /// </summary>
+        /// <returns>AddBookingView ViewModel</returns>
         [HttpGet]
         public IActionResult AddBooking()
         {
@@ -46,19 +69,11 @@ namespace Hotel_Management.Controllers
             return View(abv);
         }
 
-        //[HttpPost]
-        //public IActionResult AddBooking(Booking booking)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        _bookingRepo.AddBooking(booking);
-        //        return RedirectToAction("BookingHome");
-        //    }
-        //    return View("AddBooking");
-        //}
-
-
+        /// <summary>
+        /// Asynchronously Adds Booking to Database via HttpPost API call.
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns>Redirect back to BookingHome</returns>
         [HttpPost]
         public async Task<IActionResult> AddBooking(Booking booking)
         {
@@ -83,7 +98,11 @@ namespace Hotel_Management.Controllers
         }
 
 
-
+        /// <summary>
+        /// Asynchronously gets existing Booking in Database via HttpGet API call with Id. This Booking will be updated.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Booking to be updated</returns>
         public async Task<IActionResult> UpdateBooking(int id)
         {
             Booking getBook = new Booking();
@@ -99,17 +118,11 @@ namespace Hotel_Management.Controllers
             return View(getBook);
         }
 
-        //[HttpPost]
-        //public IActionResult UpdateBooking(Booking booking)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _bookingRepo.UpdateBooking(booking);
-        //        return RedirectToAction("BookingHome");
-        //    }
-        //    return View("UpdateBooking");
-        //}
-
+        /// <summary>
+        /// Asynchronously updates existing Booking in Database via HttpPut API call.
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns>Redirect back to BookingHome</returns>
         [HttpPost]
         public async Task<IActionResult> UpdateBooking(Booking booking)
         {
@@ -130,7 +143,11 @@ namespace Hotel_Management.Controllers
 
 
 
-
+        /// <summary>
+        /// Deletes Booking by ID in Repository
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ActionResult that redirects back to BookingHome</returns>
         [HttpPost, ActionName("DeleteBooking")]
         public IActionResult DeleteConfirm(int id)
         {
@@ -139,6 +156,11 @@ namespace Hotel_Management.Controllers
             return RedirectToAction("BookingHome");
         }
 
+        /// <summary>
+        /// Gets complete Booking details, including respective Room and Guest via the BookingDetailsView ViewModel.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>BookingDetailsView</returns>
         [HttpGet]
         public IActionResult BookingDetails(int id)
         {

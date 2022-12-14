@@ -9,7 +9,10 @@ namespace Hotel_Management.Controllers
       
 
 
-        
+        /// <summary>
+        /// Gets all Rooms in Database via HttpGet API call
+        /// </summary>
+        /// <returns>View of IEnumerable<Rooms></returns>
         public async Task<IActionResult> RoomHome()
         {
             List<Room> rooms = new List<Room>();
@@ -26,7 +29,11 @@ namespace Hotel_Management.Controllers
           
         }
 
-
+        /// <summary>
+        /// Gets specific Room in Database via Id. Uses HttpGet
+        /// </summary>
+        /// <param name="roomNo"></param>
+        /// <returns>List of Rooms with Id</returns>
         [HttpPost]
         public async Task<IActionResult> RoomHome(string roomNo)
         {
