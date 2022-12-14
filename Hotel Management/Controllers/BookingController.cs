@@ -111,7 +111,7 @@ namespace Hotel_Management.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(Booking booking)
+        public async Task<IActionResult> UpdateBooking(Booking booking)
         {
             Booking getBook = new Booking();
             using (var httpClient = new HttpClient())

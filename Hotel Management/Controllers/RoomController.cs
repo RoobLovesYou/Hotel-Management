@@ -8,10 +8,6 @@ namespace Hotel_Management.Controllers
     {
       
 
-        public RoomController(IRoomRepo roomRepo)
-        {
-            _roomRepo = roomRepo;
-        }
 
         
         public async Task<IActionResult> RoomHome()
