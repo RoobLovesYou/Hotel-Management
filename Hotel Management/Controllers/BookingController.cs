@@ -2,6 +2,7 @@
 using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text;
 
 namespace Hotel_Management.Controllers
@@ -19,15 +20,19 @@ namespace Hotel_Management.Controllers
             _roomRepo = roomRepo;
         }
 
-        [HttpGet]
-        public IActionResult BookingHome()
+        
+        public async Task<IActionResult> BookingHome()
         {
-            GuestBookingView blv = new GuestBookingView();
-            blv.bookings = _bookingRepo.GetBookings;
-
-
-
-            return View(_bookingRepo.GetBookings);
+            List<Booking> bookings = new List<Booking>();
+            using(HttpClient client = new HttpClient())
+            {
+                using(var response = await client.GetAsync("https://localhost:7000/api/bookingapi"))
+                {
+                    string resp = await response.Content.ReadAsStringAsync();
+                    bookings = JsonConvert.DeserializeObject<List<Booking>>(resp);
+                }
+            }
+            return View(bookings);
         }
 
 
@@ -61,7 +66,7 @@ namespace Hotel_Management.Controllers
             using (HttpClient httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("http://localhost:7000/api/bookingapi",content))
+                using (var response = await httpClient.PostAsync("https://localhost:7000/api/bookingapi",content))
                 {
                     if(response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
@@ -79,28 +84,52 @@ namespace Hotel_Management.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult UpdateBooking(int id)
+        public async Task<IActionResult> UpdateBooking(int id)
         {
-
-            if (id == 0)
+            Booking getBook = new Booking();
+            using (var httpClient = new HttpClient())
             {
-                return View(new Booking());
+                using (var resp = await httpClient.GetAsync("https://localhost:7000/api/bookingapi/" + id))
+                {
+                    string apiBook = await resp.Content.ReadAsStringAsync();
+                    
+                    getBook = JsonConvert.DeserializeObject<Booking>(apiBook);
+                }
             }
-
-            return View(_bookingRepo[id]);
+            return View(getBook);
         }
+
+        //[HttpPost]
+        //public IActionResult UpdateBooking(Booking booking)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _bookingRepo.UpdateBooking(booking);
+        //        return RedirectToAction("BookingHome");
+        //    }
+        //    return View("UpdateBooking");
+        //}
 
         [HttpPost]
-        public IActionResult UpdateBooking(Booking booking)
+        public async Task<IActionResult> UpdateProduct(Booking booking)
         {
-            if (ModelState.IsValid)
+            Booking getBook = new Booking();
+            using (var httpClient = new HttpClient())
             {
-                _bookingRepo.UpdateBooking(booking);
-                return RedirectToAction("BookingHome");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
+                using (var resp = await httpClient.PutAsync("https://localhost:7000/api/bookingapi", content))
+                {
+                    string apiRes = await resp.Content.ReadAsStringAsync();
+
+                    getBook = JsonConvert.DeserializeObject<Booking>(apiRes);
+                    
+                }
             }
-            return View("UpdateBooking");
+            return RedirectToAction("BookingHome");
         }
+
+
+
 
         [HttpPost, ActionName("DeleteBooking")]
         public IActionResult DeleteConfirm(int id)
