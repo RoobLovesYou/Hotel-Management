@@ -1,4 +1,11 @@
-﻿namespace Hotel_Management.Models
+﻿/* Author: Reuben Tudball
+ * 
+ * This is an interface for RoomRepo. 
+ * 
+ * 
+ */
+
+namespace Hotel_Management.Models
 {
     public class RoomRepo : IRoomRepo
     {

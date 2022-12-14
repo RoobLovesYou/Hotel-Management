@@ -1,5 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+/* Author: Reuben Tudball
+ * 
+ * This is an context class. 
+ * 
+ * 
+ */
+
 namespace Hotel_Management.Models
 {
     public class HMContext : DbContext

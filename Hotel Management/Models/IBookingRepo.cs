@@ -1,4 +1,10 @@
-﻿namespace Hotel_Management.Models
+﻿/* Author: Reuben Tudball
+ * 
+ * This is an interface for BookingRepo. 
+ * 
+ * 
+ */
+namespace Hotel_Management.Models
 {
     public interface IBookingRepo
     {

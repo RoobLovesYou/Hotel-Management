@@ -1,5 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+/* Author: Hoorya Rafiq
+ * 
+ * This is an model class for RoomRepo. 
+ * 
+ * 
+ */
+
 namespace Hotel_Management.Models
 {
     public class GuestRepo : IGuestRepo

@@ -1,5 +1,9 @@
-﻿using Google.Apis.Calendar.v3.Data;
-
+﻿/* Author: Reuben Tudball
+ * 
+ * This is an  model class for Bookings. 
+ * 
+ * 
+ */
 namespace Hotel_Management.Models
 {
     public class Booking

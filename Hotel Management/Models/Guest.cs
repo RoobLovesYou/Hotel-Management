@@ -1,4 +1,10 @@
-﻿namespace Hotel_Management.Models
+﻿/* Author: Hoorya Rafiq
+ * 
+ * This is an  model class for Guests. 
+ * 
+ * 
+ */
+namespace Hotel_Management.Models
 {
     public class Guest
     {

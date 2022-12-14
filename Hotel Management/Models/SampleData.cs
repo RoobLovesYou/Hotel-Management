@@ -1,5 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+/* Author: Hoorya Rafiq
+ * 
+ * This is an class to populate the HotelDB with sample data. 
+ * 
+ * 
+ */
 namespace Hotel_Management.Models
 {
     public class SampleData

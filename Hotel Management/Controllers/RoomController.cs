@@ -1,6 +1,13 @@
 ﻿using Hotel_Management.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+/* Author: Hoorya Rafiq
+ * 
+ * This is an controller for Rooms. It handles all CRUD operations by utilizing the Room Repository.
+ * 
+ * 
+ */
+
 
 namespace Hotel_Management.Controllers
 {

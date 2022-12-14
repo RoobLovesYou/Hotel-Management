@@ -2,6 +2,13 @@
 using Google.Apis.Calendar.v3;
 using Google.Apis.Util.Store;
 using Microsoft.AspNetCore.Mvc;
+/* Author: Reuben Tudball
+ * 
+ * This is an controller for the Home.
+ * 
+ * 
+ */
+
 
 namespace Hotel_Management.Controllers
 {

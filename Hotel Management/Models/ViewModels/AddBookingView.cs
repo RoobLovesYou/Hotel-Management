@@ -1,4 +1,11 @@
-﻿namespace Hotel_Management.Models.ViewModels
+﻿/* Author: Reuben Tudball
+ * 
+ * This is an view model class for AddBookings view. 
+ * 
+ * 
+ */
+
+namespace Hotel_Management.Models.ViewModels
 {
     public class AddBookingView
     {

@@ -4,6 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text;
+/* Author: Reuben Tudball
+ * 
+ * This is an controller for Bookings. It handles all CRUD operations by utilizing the Booking Repository.
+ * 
+ * 
+ */
+
 
 namespace Hotel_Management.Controllers
 {

@@ -1,4 +1,11 @@
-﻿namespace Hotel_Management.Models
+﻿
+/* Author: Hoorya Rafiq
+ * 
+ * This is an interface for GuestRepo. 
+ * 
+ * 
+ */
+namespace Hotel_Management.Models
 {
     public interface IGuestRepo
     {

@@ -1,5 +1,11 @@
 ﻿using Hotel_Management.Models;
 using Microsoft.AspNetCore.Mvc;
+/* Author: Hoorya Rafiq
+ * 
+ * This is an API controller for Rooms. It handles all CRUD operations by utilizing the Room Repository.
+ * 
+ * 
+ */
 
 namespace Hotel_Management.APIControllers
 {

@@ -1,5 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+/* Author: Reuben Tudball
+ * 
+ * This is an model class for BookingRepo. 
+ * 
+ * 
+ */
+
 namespace Hotel_Management.Models
 {
     public class BookingRepo : IBookingRepo

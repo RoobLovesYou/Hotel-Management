@@ -1,6 +1,14 @@
 ﻿using Hotel_Management.Models;
 using Microsoft.AspNetCore.Mvc;
 
+/* Author: Hoorya Rafiq
+ * 
+ * This is an API controller for Guests. It handles all CRUD operations by utilizing the Guest Repository.
+ * 
+ * 
+ */
+
+
 namespace Hotel_Management.APIControllers
 {
     [Route("api/[controller]")]

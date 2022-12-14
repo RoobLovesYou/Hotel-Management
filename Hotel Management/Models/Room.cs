@@ -1,4 +1,10 @@
-﻿namespace Hotel_Management.Models
+﻿/* Author: Reuben Tudball
+ * 
+ * This is an model class for Rooms. 
+ * 
+ * 
+ */
+namespace Hotel_Management.Models
 {
     public class Room
     {

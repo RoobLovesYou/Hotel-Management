@@ -3,6 +3,13 @@ using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
+/* Author: Hoorya Rafiq
+ * 
+ * This is an controller for Guests. It handles all CRUD operations by utilizing the Guest Repository.
+ * 
+ * 
+ */
+
 
 namespace Hotel_Management.Controllers
 {

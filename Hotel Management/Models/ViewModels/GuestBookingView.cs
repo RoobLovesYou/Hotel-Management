@@ -1,4 +1,11 @@
-﻿namespace Hotel_Management.Models.ViewModels
+﻿/* Author: Hoorya Rafiq
+ * 
+ * This is an view model class for GuestBooking view. 
+ * 
+ * 
+ */
+
+namespace Hotel_Management.Models.ViewModels
 {
     public class GuestBookingView
     {
