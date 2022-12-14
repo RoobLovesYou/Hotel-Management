@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Util.Store;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel_Management.Controllers
 {
@@ -8,6 +11,11 @@ namespace Hotel_Management.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public void CalendarEvents()
+        {
+
         }
     }
 }

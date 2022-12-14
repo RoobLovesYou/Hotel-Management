@@ -1,7 +1,8 @@
 ﻿using Hotel_Management.Models;
 using Hotel_Management.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Hotel_Management.Controllers
 {
@@ -21,16 +22,16 @@ namespace Hotel_Management.Controllers
         [HttpGet]
         public IActionResult BookingHome()
         {
-           GuestBookingView blv = new GuestBookingView();
+            GuestBookingView blv = new GuestBookingView();
             blv.bookings = _bookingRepo.GetBookings;
 
-           
+
 
             return View(_bookingRepo.GetBookings);
         }
 
 
-        
+
         [HttpGet]
         public IActionResult AddBooking()
         {
@@ -40,31 +41,53 @@ namespace Hotel_Management.Controllers
             return View(abv);
         }
 
+        //[HttpPost]
+        //public IActionResult AddBooking(Booking booking)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        _bookingRepo.AddBooking(booking);
+        //        return RedirectToAction("BookingHome");
+        //    }
+        //    return View("AddBooking");
+        //}
+
+
         [HttpPost]
-        public IActionResult AddBooking(Booking booking)
+        public async Task<IActionResult> AddBooking(Booking booking)
         {
-            if (ModelState.IsValid)
+            Booking bookingToAdd = new Booking();
+            using (HttpClient httpClient = new HttpClient())
             {
-                
-                _bookingRepo.AddBooking(booking);
-                return RedirectToAction("BookingHome");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
+                using (var response = await httpClient.PostAsync("http://localhost:7000/api/bookingapi",content))
+                {
+                    if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        string apiResonse = await response.Content.ReadAsStringAsync();
+                        bookingToAdd = JsonConvert.DeserializeObject<Booking>(apiResonse);
+                    }
+                    else
+                    {
+                        ViewBag.StatusCode = Response.StatusCode;
+                    }
+                }
             }
-            return View("AddBooking");
+            return RedirectToAction("BookingHome");
         }
-        
 
 
-        
 
         [HttpGet]
         public IActionResult UpdateBooking(int id)
         {
-            
-            if ( id == 0)
+
+            if (id == 0)
             {
                 return View(new Booking());
             }
-            
+
             return View(_bookingRepo[id]);
         }
 
@@ -92,10 +115,6 @@ namespace Hotel_Management.Controllers
         {
             BookingDetailsView bookingDetailsView = new BookingDetailsView();
             bookingDetailsView.booking = _bookingRepo[id];
-        
-
-
-
             bookingDetailsView.guest = _guestRepo[bookingDetailsView.booking.guestId];
             bookingDetailsView.room = _roomRepo[bookingDetailsView.booking.roomId];
 
